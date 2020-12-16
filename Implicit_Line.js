@@ -10,6 +10,10 @@ function impl_circ(cx, cy, radi, in_x, in_y) {
 	return ( (in_x-cx)*(in_x-cx) + (in_y-cy)*(in_y-cy) - radi*radi);
 }
 
+function random(min, max) {
+	return (min + Math.random() * (max - min));
+}
+
 function draw() {
 	background(255);
 	noStroke();
@@ -19,18 +23,30 @@ function draw() {
 				&& impl_line(0, height, width/2, 0, x, y) < 0
 				|| impl_line(width/2, 0, width, height, x, y) < 0
 				&& impl_line(width/2, height, width, height/4, x, y) < 0) {
-				fill(31, 230, 255);
+				//Cherry Blossom fill(random(255, 255), random(200, 255), random(255, 255));
+				fill(random(100, 220), random(230, 255), 255);
 			}
 			else {
-				fill(239, 192, 43);
+				fill(239, random(150, 230), 43);
 			}
 
 			if(impl_circ(width/2, height/2, 40, x, y) < 0) {
-				fill(255, 0, 0);
+				//RANBO fill(random(186, 255), random(0, 166), random(0, 166));
+				//ICE fill(random(186, 255), random(255, 255), random(255, 255));
+				//RAINBOW FISH fill(random(186, 255), random(166, 255), random(166, 255));
+				fill(random(70, 255), 0, 0);
+			}
+
+			if(impl_circ(0, height/2 + 20, 30, x, y) < 0) {
+				fill(random(70, 255), 0, 0);
+			}
+
+			if(impl_circ(width, height/2 + 20, 30, x, y) < 0) {
+				fill(random(70, 255), 0, 0);
 			}
 			
 			
-			ellipse(x, y, 5, 5);
+			ellipse(x, y, random(10, 19), random(10, 19));
 		}
 	}
 	noLoop();
